@@ -1,6 +1,7 @@
 package com.example.javapdfviewer;
 
 import android.Manifest;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -23,9 +24,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonOpenFile(View view){
-        Intent intent = new Intent(Intent.ACTION_VIEW, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
-        intent.setType("application/pdf");
+//        Intent intent = new Intent(Intent.ACTION_VIEW, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
+//        intent.setType("application/pdf");
 //        intent.setType("*/*");
-        this.startActivity(intent);
+        this.startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setType("application/pdf");
     }
 }
